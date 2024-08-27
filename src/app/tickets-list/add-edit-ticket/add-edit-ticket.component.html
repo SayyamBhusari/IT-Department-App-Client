@@ -1,0 +1,37 @@
+<div class="add-edit-container">
+    <form [formGroup]="ticketForm" (ngSubmit)="saveTicket()">
+      <h2>{{ isEditMode ? 'Edit Ticket' : 'Add Ticket' }}</h2>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" formControlName="title" class="form-control" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="raisedBy">Raised By</label>
+        <input id="raisedBy" formControlName="raisedBy" class="form-control" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="department">Department</label>
+        <input id="department" formControlName="department" class="form-control" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="resolvedBy">Resolved By</label>
+        <input id="resolvedBy" formControlName="resolvedBy" class="form-control" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" formControlName="status" class="form-control">
+          <option value="Open">Open</option>
+          <option value="Accepted">Accepted</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Rejected">Rejected</option>
+          <option value="Closed">Closed</option>
+          <option value="Resolved">Resolved</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+        <button class="btn btn-secondary" type="button" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

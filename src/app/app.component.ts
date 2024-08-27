@@ -1,13 +1,38 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  standalone: false
 })
 export class AppComponent {
-  title = 'IT-Department-Ticket-System';
+  title = 'Your Application';
+  isProfileDropdownOpen = false;
+  username = 'John Doe'; // Replace with actual user data
+  email = 'john.doe@example.com'; // Replace with actual user data
+  showHeader: boolean = true;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.showHeader = !event.url.includes('/login');
+      }
+    });
+  }
+
+  ToggleProfileDropdown(): void {
+    this.isProfileDropdownOpen = !this.isProfileDropdownOpen;
+  }
+
+  Logout(): void {
+    this.isProfileDropdownOpen = false;
+    localStorage.removeItem('token'); // Clear token from local storage
+    this.router.navigate(['/login']); // Redirect to login page or home
+  }
+
+  RedirectToHome():void{
+    this.router.navigate(['/home']); // Navigate to the Home page
+  }
 }

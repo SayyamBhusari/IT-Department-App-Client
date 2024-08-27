@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* global styles.css */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; */
+  /* Prevent scrolling */
+}
+
+/* global styles.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* Include padding and border in the element's total width and height */
+}

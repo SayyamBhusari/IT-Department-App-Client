@@ -1,0 +1,37 @@
+<div class="ticket-container">
+    <main class="body">
+        <div class="header-section">
+            <h2>Ticket List</h2>
+            <div class="button-group">
+                <button class="btn btn-primary" (click)="AddTicket()">Add Ticket</button>
+                <button class="btn btn-secondary" (click)="RefreshPage()">Refresh</button>
+            </div>
+        </div>
+        <table class="ticket-table">
+            <thead>
+                <tr>
+                    <th>SR No</th>
+                    <th (click)="sort('title')">Title</th>
+                    <th (click)="sort('raisedBy')">Raised By</th>
+                    <th (click)="sort('department')">Department</th>
+                    <th (click)="sort('resolvedBy')">Resolved By</th>
+                    <th (click)="sort('status')">Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ticket of tickets; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{ ticket.title }}</td>
+                    <td>{{ ticket.raisedBy }}</td>
+                    <td>{{ ticket.department }}</td>
+                    <td>{{ ticket.resolvedBy || 'N/A' }}</td>
+                    <td>{{ ticket.status }}</td>
+                    <td>
+                        <button class="btn btn-warning" (click)="EditTicket(ticket.id)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</div>

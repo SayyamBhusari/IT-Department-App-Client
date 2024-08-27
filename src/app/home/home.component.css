@@ -1,0 +1,28 @@
+/* home.component.css */
+.home-content {
+    /* margin-top: 80px; */
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    height:100vh;
+    border-collapse: collapse;
+  }
+  
+  .home-content h1 {
+    margin-bottom: 20px;
+  }
+  
+  .home-content button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .home-content button:hover {
+    background-color: #0056b3;
+  }
+  

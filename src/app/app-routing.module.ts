@@ -6,13 +6,15 @@ import { AuthGuard } from './authentication/auth.gaurd';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 const routes: Routes = [
-  { path: 'tickets', component: TicketListComponent },
-  { path: 'ticket/add', component: AddEditTicketComponent },
-  { path: 'ticket/edit/:ticketId', component: AddEditTicketComponent },
-  { path: 'home', component: HomeComponent},
+  { path: 'tickets', component: TicketListComponent, canActivate: [AuthGuard]},
+  { path: 'ticket/add', component: AddEditTicketComponent, canActivate: [AuthGuard]},
+  { path: 'ticket/edit/:ticketId', component: AddEditTicketComponent, canActivate: [AuthGuard]},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
+  { path: 'unauthorized', component: UnauthorizedComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 

@@ -9,13 +9,17 @@ import { AddEditTicketComponent } from './tickets-list/add-edit-ticket/add-edit-
 import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './authentication/auth.interceptor';
+import { ErrorPopupComponent } from './error-popup/error-popup.component';
+import { ProgressInterceptor } from './progress/progress.interceptor';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TicketListComponent, // Declare TicketListComponent here
     AddEditTicketComponent,
-    LoginComponent
+    LoginComponent,
+    ErrorPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,10 @@ import { AuthInterceptor } from './authentication/auth.interceptor';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ProgressInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

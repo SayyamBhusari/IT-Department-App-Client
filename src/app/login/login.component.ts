@@ -10,7 +10,7 @@ import { AuthService } from '../authentication/auth.service'; // Import your aut
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  errorMessage: string | null = null;
+  errorMessage: string  = "";
   token: any;
 
   constructor(
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
+    this.errorMessage = "";
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
         response => {
@@ -35,10 +36,13 @@ export class LoginComponent implements OnInit {
             console.log('Logged in successfully, token:', this.token);
             // Store the token in localStorage/sessionStorage for future requests
             localStorage.setItem('jwtToken', this.token);
+            this.router.navigate(['/home']);
           }
         }, error => {
+          this.errorMessage = "Invalid Username And Password";
           console.error('Login failed', error);
         });
     }
   }
+
 }

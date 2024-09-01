@@ -12,6 +12,7 @@ import { AuthInterceptor } from './authentication/auth.interceptor';
 import { ErrorPopupComponent } from './error-popup/error-popup.component';
 import { ProgressInterceptor } from './progress/progress.interceptor';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
     TicketListComponent, // Declare TicketListComponent here
     AddEditTicketComponent,
     LoginComponent,
-    ErrorPopupComponent
+    ErrorPopupComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
